@@ -12,7 +12,7 @@ Before you begin, ensure that you have Docker installed on your machine. You can
 
 #### Clone this repo
 ```bash
-git clone https://github.com/annuv231/cpp-hello-world-docker.git
+git clone https://github.com/annuv231/Docker--A-beginner-guide.git
 cd cpp-hello-world-docker
 ```
 
