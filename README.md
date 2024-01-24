@@ -5,7 +5,7 @@
 > #### Scenario: Dockerized simple "Hello, World!" Program
 
 #### Introduction
-Welcome to our Dockerized C++ "Hello, World!" example! This project demonstrates how to containerize a simple C++ program using Docker. By following the instructions below, you'll be able to build a Docker image and run a container that executes a basic "Hello, World!" program.
+ This project demonstrates how to containerize a simple C++ program using Docker. By following the instructions below, you'll be able to build a Docker image and run a container that executes a basic "Hello, World!" program.
 
 #### Prerequisites
 Before you begin, ensure that you have Docker installed on your machine. You can download Docker from Docker's official website.
