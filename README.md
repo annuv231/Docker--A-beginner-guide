@@ -26,6 +26,18 @@ docker build -t cpp-hello-world .
 ```
 This command uses the provided Dockerfile to create an image named cpp-hello-world.
 
+#### RUN the image
+
+To see the image details run the following command
+```bash
+docker images
+```
+
+To run the image
+
+```bash
+docker run -it <image-name>
+```
 
 ## Basic Commands
 
