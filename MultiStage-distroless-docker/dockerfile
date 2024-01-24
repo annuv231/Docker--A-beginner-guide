@@ -1,0 +1,15 @@
+# Docker C++ "Hello, World!" Example with Distroless
+
+# Builder Stage
+FROM ubuntu:20.04 as builder
+WORKDIR /app
+COPY . /app
+RUN apt-get update && apt-get install -y g++
+RUN g++ -o hello-world hello-world.cpp
+
+# Final Stage
+FROM gcr.io/distroless/cc
+COPY --from=builder /app/hello-world /app/hello-world
+WORKDIR /app
+CMD ["./hello-world"]
+
