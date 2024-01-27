@@ -89,3 +89,96 @@ docker run <image name>
 ```
 
 exp : docker run ubuntu
+
+
+
+# Docker Networking
+
+Docker networking enables communication between Docker containers, between containers and the host system, and between containers across multiple hosts. Docker provides various networking options to suit different use cases. Here's an explanation of Docker networking concepts along with examples:
+
+#### 1. Default Bridge Network:
+> Concept:
+The default bridge network (bridge) is created automatically when Docker is installed.
+Containers connected to the bridge network can communicate with each other.
+Each container gets its own IP address within the bridge network.
+
+###### Example:
+Create a container connected to the default bridge network:
+
+```bash
+docker run -d --name container1 nginx
+```
+#### 2. Host Network:
+
+> Concept:
+Containers use the host network (host) directly, bypassing Docker's network isolation.
+Containers share the network namespace with the host system, meaning they can access ports as if they were running directly on the host.
+
+###### Example:
+Run a container using the host network:
+
+```bash
+docker run -d --name container2 --network host nginx
+```
+#### 3. User-defined Bridge Network:
+
+> Concept:
+User-defined bridge networks allow containers to communicate with each other while isolating them from other networks.
+Containers connected to the same user-defined bridge network can communicate with each other.
+Provides better security and isolation compared to the default bridge network.
+
+###### Example:
+Create a user-defined bridge network:
+
+```bash
+docker network create my-network
+```
+Run containers connected to the user-defined bridge network:
+
+```bash
+docker run -d --name container3 --network my-network nginx
+```
+#### 4. Overlay Network:
+
+> Concept:
+Overlay networks facilitate communication between containers across multiple Docker hosts (Swarm mode).
+Containers in different Swarm nodes can communicate with each other seamlessly.
+Provides multi-host networking for Docker Swarm services.
+
+###### Example:
+Create an overlay network:
+
+```bash
+docker network create --driver overlay my-overlay-network
+```
+Deploy services connected to the overlay network:
+
+```bash
+docker service create --name my-service --network my-overlay-network nginx
+```
+#### 5. MACVLAN Network:
+
+> Concept:
+MACVLAN allows you to assign a MAC address to a container, making it appear as a physical device on the network.
+Each container has its own unique MAC address and IP address.
+Useful for scenarios requiring direct access to the network.
+
+###### Example:
+
+Create a MACVLAN network:
+
+```bash
+docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 my-macvlan-network
+```
+Run containers connected to the MACVLAN network:
+
+
+```bash
+docker run -d --name container4 --network my-macvlan-network nginx
+```
+#### Summary:
+
+
+Docker provides various networking options, including default bridge, host, user-defined bridge, overlay, and MACVLAN networks.
+Each network type offers different features and use cases, ranging from basic container communication to multi-host networking in Docker Swarm.
+Understanding Docker networking concepts helps in designing and deploying containerized applications with appropriate network configurations based on requirements.
